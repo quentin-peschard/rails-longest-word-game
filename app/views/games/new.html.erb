@@ -1,0 +1,18 @@
+<div class="body">
+  <h1>(Des chiffres et) des lettres</h1>
+  <h2>Nouvelle partie</h2>
+  <p>Trouvez le mot le plus long en utilisant uniquement les lettres ci-dessous (en anglais)</p>
+
+  <ul class="list-group list-group-horizontal">
+    <% @letters.each do |letter| %>
+      <li class="btn btn-light"><%= letter %></li>
+    <% end %>
+  </ul>
+
+  <form action="/score" method="POST">
+    <input type="text" name="input" placeholder="Please enter your word">
+    <button type="submit" id="submit" class="btn btn-secondary">Submit</button>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :grid, @letters %>
+  </form>
+</div>
