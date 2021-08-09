@@ -20,15 +20,11 @@ class GamesController < ApplicationController
     return @result
   end
 
-  def time
-    4
-  end
-
   def score
     user_input = params[:input].upcase
     if included?(user_input, params[:grid].split(' '))
       if english( "https://wagon-dictionary.herokuapp.com/#{params[:input]}")
-        @output = "Well done! Your score is #{time}"
+        @output = "Well done! Your score is #{user_input.size}"
       else
         @output = "Sorry this is not an english word, please try again"
       end
